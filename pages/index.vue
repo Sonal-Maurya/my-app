@@ -1,4 +1,8 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const {data: posts} =await useWpApi().getPosts<any>();
+
+
+</script>
 <template>
    <main>
     <PageHeader>
@@ -26,14 +30,14 @@
     <section class="container py-16">
       <div class="grid sm:grid-cols-3 gap-10">
         <BlogCard
-          v-for="i in 9"
-          :key="i"
-          title="How to Master DSA"
-          excerpt="Practice is key to master the dsa and solving the problems in right way will help you to do so."
-          image="https://www.tate.org.uk/art/artworks/hashmi-letters-from-home-p80181"
-          slug="blog-1"
+          v-for="post in posts"
+          :key="post.id"
+          :title="post.title.rendered"
+          :excerpt="post.excerpt.rendered"
+          :image="post._embedded['wp:featuredmedia'][0]?.source_url"
+          :slug="post.slug"
         
-        ></BlogCard>
+        />
     
       </div>
     </section>

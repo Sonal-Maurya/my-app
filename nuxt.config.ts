@@ -6,6 +6,14 @@ export default defineNuxtConfig({
       title: "GeekTrose",
     },
   },
-  modules: ['@nuxtjs/tailwindcss']
+  modules: ['@nuxtjs/tailwindcss'],
+
+
+
+  runtimeConfig:{
+    public:{
+      wpUri: process.env.WP_URI,
+    },
+  },
 
 })
